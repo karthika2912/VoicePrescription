@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <title>Speech To Text</title>
+      
+  
+  </head>
+ 
+  <body class="container pt-5 bg-dark">
+      
+    <div class="mt-4" id="div_language" style="display:none">
+      <h2 class="mb-3 text-light">Select Language</h2>
+      <select class="form-select bg-secondary text-light" id="select_language" onchange="updateCountry()"></select>
+      <select class="form-select bg-secondary text-light mt-2" id="select_dialect"></select>
+    </div>
+    <h2 class="mt-4 text-light">PRESCRIPTION</h2>
+    <div class="p-3" style="border: 1px solid gray; height: 300px; border-radius: 8px;">
+      <textarea rows=5 cols=100 id="output" bg-dark></textarea>
+    </div>
+    <div class="mt-4">
+      <button class="btn btn-success" id="start">Start</button>
+      <button class="btn btn-danger" id="stop">Stop</button>
+      <button class="btn btn-info" id="reset">Reset</button>
+      <p id="status" class="lead mt-3 text-light" style="display: none" >Listenting ...</p>
+      <p id="final" class="lead mt-3 text-light" >Saved text will be displayed</p>
+   
+    </div>
+    <form action="/gen_pres" method="POST">
+        <input type="text" name="check" value="pres" id="outs" style="display:none">
+        <input type="submit" submit>
+      </form>
+     
+  </body>
+        <script>
+    if ("webkitSpeechRecognition" in window) {
+  let speechRecognition = new webkitSpeechRecognition();
+  let final_transcript = "";
+
+  speechRecognition.continuous = true;
+  speechRecognition.interimResults = true;
+  speechRecognition.lang = document.querySelector("#select_dialect").value;
+
+  speechRecognition.onstart = () => {
+    document.querySelector("#status").style.display = "block";
+  };
+  speechRecognition.onerror = () => {
+    document.querySelector("#status").style.display = "none";
+    console.log("Speech Recognition Error");
+  };
+  speechRecognition.onend = () => {
+    document.querySelector("#status").style.display = "none";
+    console.log("Speech Recognition Ended");
+  };
+
+  speechRecognition.onresult = (event) => {
+    let interim_transcript = "";
+
+    for (let i = event.resultIndex; i < event.results.length; ++i) {
+      if (event.results[i].isFinal) {
+        final_transcript += event.results[i][0].transcript;
+      } else {
+        interim_transcript += event.results[i][0].transcript;
+        
+      }
+    }
+
+    document.querySelector("#output").innerHTML = final_transcript;
+      document.getElementById("outs").value=final_transcript;
+  };
+
+  document.querySelector("#start").onclick = () => {
+    speechRecognition.start();
+  };
+  document.querySelector("#stop").onclick = () => {
+       document.querySelector("#final").innerHTML = final_transcript;
+     
+    speechRecognition.stop();
+     
+  };
+  document.querySelector("#reset").onclick=()=>{
+        document.querySelector("#output").innerHTML = "";
+      final_transcript="";
+        
+  }
+} else {
+  console.log("Speech Recognition Not Available");
+}
+</script>
+        
+  
+    
+    
+</html>

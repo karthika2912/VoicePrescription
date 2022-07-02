@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Register</title>
+         <style>
+        h1{
+            color:#4682B4;
+            font-size:40px;
+            font-family:sans-serif;
+        }
+            label{
+                 font-size:20px;
+                font-family:sans-serif;
+                color:#4682B4;
+            }
+            input[type="submit"],button{
+                height:40px;
+                width:100px;
+                background-color:#4682B4;
+                border-radius:20px;
+                font-family:sans-serif;
+                color:white;
+            }
+            input[type="text"]{
+                
+                height:20px;
+                width:200px;
+                border-radius:10px;
+                font-family:sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+         <div style="float:left">
+        <img src="https://lms.adanisaksham.com/webservice/pluginfile.php/405/course/overviewfiles/GDA.gif?token=4b110668daa7729b0aca9cf984627e3a" alt="" style="hieght:400px;width:400px;">
+    </div>
+          <form action="/register" method="POST">
+              <center>
+        <h1>Welcome to Registration Page</h1>
+        <label>Username&nbsp;&emsp;&emsp;</label>
+        <input type="text" name="uname" required><br><br>
+        <label>Password&nbsp;&emsp;&emsp;</label>
+            <input type="text" name="pass" required><br><br>
+        <label>Full Name&emsp;&emsp;</label>
+        <input type="text" name="fname" required><br><br>
+        
+        <label>Email&emsp;&emsp;&emsp;&emsp;</label>
+        <input type="text" name="email" required><br><br>
+        <label>Mobile&nbsp;&emsp;&emsp;&emsp;</label>
+        <input type="text" name="mobile" required><br><br>
+            <input type="submit" value="REGISTER">
+          <a href="/login"><button>LOGIN</button></a>
+            </center>
+        </form>
+    </body>
+</html>

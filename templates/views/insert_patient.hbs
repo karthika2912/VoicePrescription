@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Welcome</title>
+        <style>
+              input[type="submit"],button{
+              background-color:#4682B4;
+              border-radius:60px;
+              height:40px;
+              width:200px;
+                  font-family:sans-serif;
+          }
+            h1{
+              color:#4682B4;
+              font-size:40px;
+                font-family:sans-serif;
+          }
+            #patient_details{
+                
+                border-color:#4682B4;
+                border-radius:5px;
+                font-family:sans-serif;
+            }
+              input[type="text"]{
+            
+                height:20px;
+                width:200px;
+                border-radius:20px;
+                  font-family:sans-serif;
+              
+            }
+            label{
+                font-size:20px;
+                font-family:sans-serif;
+            }
+        </style>
+        <script>
+        
+            
+            
+            
+        </script>
+     </head>
+    <body>
+        <div style="float:left;" >
+                <img src="https://cdn.dribbble.com/users/2025439/screenshots/4062776/ml_gif4.gif" style="border-radius:50px;height:350px;width:500px;border-radius:10px;">
+        </div>
+        
+        <form action="/insert_patient" method="POST">
+        <center>
+        <h1>WELCOME {{user_name}}</h1>
+        
+        
+    <div id="patient_details">
+        <label>Enter Name &ensp; &ensp; &ensp;</label>
+        <input type="text" name="pname"><br><br>
+        <label>Enter Age &ensp; &ensp; &ensp; &ensp;</label>
+        <input type="text" name="page"><br><br>
+        <label>Phone number &ensp; &ensp;</label>
+        <input type="text" name="pmob"><br><br>
+        <label>Enter Email &ensp; &ensp; &ensp;&nbsp;</label>
+        <input type="text" name="pemail"><br><br>
+        <input type="submit" value="SUBMIT">
+       
+    </div>
+            
+            </center>
+        </form>
+    </body>
+</html>

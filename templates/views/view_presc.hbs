@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Prescription</title>
+        <style>
+            td{
+                font-size:20px;
+                font-family:sans-serif;
+            }
+            th{
+                color:turquoise;
+                font-size:50px;
+                font-family:sans-serif;
+            }
+            input[type="submit"],button{
+                height:40px;
+                width:200px;
+                background-color:turquoise;
+                border-radius:20px;
+                font-family:sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="/view_presc" method="POST">
+        <center>
+        <table cellspacing="20px" >
+            <tr>
+                <th colspan="8">PRESCRIPTION</th>
+            </tr>
+            <tr>
+                <td><b>Name:</b></td>
+                <td>{{pat_name}}</td>
+                <td><b>Age:</b></td>
+                <td>{{age}}</td>
+                <td></td>
+                <td></td>
+                <td><b>Date:</b></td>
+                <td>{{date}}</td>
+            </tr>
+                        <tr><td colspan="6" style="color:#4B0082">{{drug}}</td></tr>
+                        <tr><td colspan="6"  style="color:#4B0082">{{form}}</td></tr>
+                        <tr><td colspan="6"  style="color:#4B0082">{{frequency}}</td></tr>
+                        <tr><td colspan="6"  style="color:#4B0082">{{dosage}}</td></tr>
+                        <tr><td colspan="6"  style="color:#4B0082">{{route}}</td></tr>
+            <tr>
+                <td colspan="2">Doctor Name:</td>
+                <td colspan="2">{{d_name}}</td>
+            </tr>
+            
+        </table>
+            <input type="submit" value="submit">
+        </center>
+        </form>
+        
+        
+    </body>
+</html>
